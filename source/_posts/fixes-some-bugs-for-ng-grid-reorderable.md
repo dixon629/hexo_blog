@@ -4,13 +4,22 @@ categories: angularjs
 tags: [ng-gird,angularjs]
 ---
 [ng-grid-reorderable](https://github.com/angular-ui/ng-grid/tree/2.x/plugins) is a drag-drop plugin for [ng-gird](https://github.com/angular-ui/ng-grid). I found some bugs when I was using this plugin.
-###Bug 1: Can drag a row to the other ng-grid
+###Bug 1: It doesn't work on firefox
+The plugin use html5 drag-drop, firefox needs to set data for dataTransfer.
+```javascript
+//set dataTransfer as it's required by firefox
+            var onDragStart = function (event) {
+                event.originalEvent.dataTransfer.setData("gridId", self.myGrid.gridId);
+            };
+```
+
+###Bug 2: Can drag a row to the other ng-grid
 To fix this bug, it needs to compare grid id on drop event.
 ```javascript  
     var prevRow = self.services.DomUtilityService.eventStorage.rowToMove;
     if (prevRow.gridId != self.myGrid.gridId) return;
 ```
-###Bug 2: Can't select all texts when at edting status
+###Bug 3: Can't select all texts when at edting status
 To fix this bug, it needs to disable drag-drop feature.
 ```javascript
             //It should disable drag/drop feature when editing
@@ -23,7 +32,7 @@ To fix this bug, it needs to disable drag-drop feature.
                 targetRow.on('dragstart', onDragStart);
             });
 ```
-###Bug 3: Can select some texts and then drag and drop it on the ng-gird
+###Bug 4: Can select some texts and then drag and drop it on the ng-gird
 To fix this bug, it needs to remove dragover and drop event for the $viewport when editing
 ```javascript
             rowScope.$on('ngGridEventStartCellEdit', function () {
