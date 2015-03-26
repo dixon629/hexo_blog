@@ -7,7 +7,7 @@ title: Hui's blog
 subtitle: Make progress a little bit every day
 description:
 author: Hui
-language:
+language: default
 timezone:
 
 # URL
@@ -62,7 +62,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: alex
+theme: light
+
+#commnets
+disqus_shortname: dixon629githubio
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
