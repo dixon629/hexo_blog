@@ -1,6 +1,6 @@
 title: "Fixes some bugs for ng-grid-reorderable"
 date: 2015-03-26 22:00:47
-categories: angularjs
+categories: javascript
 tags: [ng-gird,angularjs]
 ---
 [ng-grid-reorderable](https://github.com/angular-ui/ng-grid/tree/2.x/plugins) is a drag-drop plugin for [ng-gird](https://github.com/angular-ui/ng-grid). I found some bugs when I was using this plugin.

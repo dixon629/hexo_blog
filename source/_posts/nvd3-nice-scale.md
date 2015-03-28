@@ -1,8 +1,8 @@
 title: "nvd3中计算坐标轴的nice domain"
 layout: photo
 date: 2015-03-24 21:39:06
-categories: d3
-tags: [d3,nvd3,chart]
+categories: javascript
+tags: [d3,nvd3,chart,angularjs]
 ---
 最近用[nvd3](https://github.com/novus/nvd3)以及[angularjs-nvd3-directives](https://github.com/angularjs-nvd3-directives/angularjs-nvd3-directives)做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。
 {% asset_img nvd3_axis_1.png %}
