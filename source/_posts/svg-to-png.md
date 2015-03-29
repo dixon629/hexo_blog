@@ -6,12 +6,12 @@ tags: [d3,nvd3,chart,canvg,angularjs]
 Recently I was working on NVD3. I got a task to export [nvd3](https://github.com/novus/nvd3) chart to PNG file.
 It needs to support IE9+, Chrome, Firefox. I encountered some problems when I was doing this task, it took me some time to figure it out. I think it is better to share my experience for who has similar requirements.
 *nvd3* is base on [d3js](http://d3js.org/). *d3js* uses SVG to render data. So the key issue is how to covert SVG to PNG, and the other issue is how to download the PNG file.
-##Solution 1: send SVG  to Server ,convert it to PNG and generate link to download
+##Solution 1: send SVG  to Server , convert it to PNG and generate link to download
 Our server-side is Asp.net, so I did some research how to convert SVG to PNG on .net. I got three options,[SVG.NET](https://github.com/vvvv/SVG),[ ImageMagick.NET](http://imagemagick.codeplex.com/),[inkscape](https://inkscape.org/).
 I tried them out, but no one can generate the PNG perfectly. The *nvd3* uses some CSS class for SVG, but *SVG.NET* and *mageMagick.NET* don't support it very well. And the PNG file that *inkscape* generates are  different with browsers render. I tried to add the styles to SVG file manually without CSS, but PNG file they generated still looks different with browsers render. 
 Finally I found [PhantomJs](http://phantomjs.org/) out. *PhantomJS* is a headless WebKit scriptable with a JavaScript API. *PhantomJS* is a perfect solution to render SVG and can export to image and PDF. It can generate PNG exactly same with browsers render. But I have to install it on the server and write some API to call it. 
 **I discussed with my leader, but she didn't like this solution, so I have to turn to Solution 2.**
-##Solution 2: convert SVG to html5 canvas ,then convert canvas to PNG and download it
+##Solution 2: convert SVG to html5 canvas , then convert canvas to PNG and download it
 ###Step 1: convert SVG to canvas
 [saveSvgAsPng](https://github.com/exupero/saveSvgAsPng) is a library to export SVG to PNG on the client-side. But unfortunately, it doesn't work on IE and safari. There is a security error on IE. And besides,It can't download the PNG file on safari, safari open the file on the new tab instead of downloading it. So I have to give up this scenario.
 And then I found [canvg](https://github.com/gabelerner/canvg) out, *canvg* can parse SVG and render it on Canvas. But *canvg *doesn't support external CSS on the SVG. 
@@ -125,5 +125,5 @@ We have to support IE9, but IE9 doesn't support html5 file API. So I did a trik,
                     });
             };
 ```
-##conclusion
+##Conclusion
 If you'd like to export SVG to PNG on the server-side, **PhantomJs** is a good choise. If you'd like to SVG to PNG on the client-side, you can use **canvg**.  But for **nvd3**, you have to figure out how to add external CSS class to SVG.
