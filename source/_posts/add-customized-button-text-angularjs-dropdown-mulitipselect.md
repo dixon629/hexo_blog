@@ -11,7 +11,7 @@ It passes three parameters: *options*, *selectedModel*, *settings*
 2. **selectedModel**: the selected model of dropdown list
 3. **settings**: the settings of dropdown list
 
-This is a demo to how to display "All" when you check the all items for the dropdown
+This is a demo: how to display "All" when you check the all items for the dropdown
 ```javascript
 function dropdownButtonTextFunction(options,selectedModel,settings){
     if(selectedModel && selectedModel.length == options.length){
