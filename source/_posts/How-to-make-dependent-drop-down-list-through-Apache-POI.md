@@ -1,4 +1,4 @@
-title: "How to make dependent drop-down list through Apache POI"
+title: "How to make dependent drop-down list in Excel through Apache POI"
 date: 2015-04-25 14:45:56
 categories: Java
 tags: [Apache POI,EXCEL]
