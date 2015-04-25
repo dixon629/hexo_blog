@@ -9,7 +9,7 @@ We want to specify the header and footer as html. So we need to parse html to it
 
 ```csharp
         /// <summary>
-        /// Parset html to PDF element list by html content and css path
+        /// Parse html to PDF element list by html content and css path
         /// </summary>
         /// <param name="html">html</param>
         /// <param name="cssPath">css full path</param>
